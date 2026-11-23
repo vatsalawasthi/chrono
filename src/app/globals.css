@@ -24,16 +24,15 @@ a { text-decoration: none; color: inherit; }
 ::-webkit-scrollbar-track { background: #0a0a0f; }
 ::-webkit-scrollbar-thumb { background: #222; border-radius: 3px; }
 
-/* Responsive grid helpers */
+/* Responsive navigation helpers */
 @media (max-width: 768px) {
-  .desktop-sidebar { display: none !important; }
   .desktop-links { display: none !important; }
   .desktop-cta { display: none !important; }
+  .mobile-menu-btn { display: flex !important; }
 }
 
 @media (min-width: 769px) {
   .mobile-menu-btn { display: none !important; }
-  .desktop-sidebar { display: block !important; }
   .desktop-links { display: flex !important; }
   .desktop-cta { display: block !important; }
 }

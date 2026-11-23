@@ -57,7 +57,7 @@ export default function FigurePage() {
               display: "flex", alignItems: "center", justifyContent: "center", fontSize: 36,
             }}>{figure.avatar}</div>
 
-            <div style={{ flex: 1, minWidth: 200 }}>
+            <div style={{ flex: "1 1 200px", minWidth: 0 }}>
               <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 10 }}>
                 {figure.tags.map((tag) => (
                   <span key={tag} style={{
@@ -122,7 +122,7 @@ export default function FigurePage() {
                 <span style={{ fontSize: 15 }}>🔗</span>
                 <h3 style={{ fontSize: 12, fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "0.08em" }}>Relationships</h3>
               </div>
-              <div style={{ padding: "12px 16px", display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(200px, 1fr))", gap: 8 }}>
+              <div style={{ padding: "12px 16px", display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(200px, 100%), 1fr))", gap: 8 }}>
                 {figure.relationships.map((rel) => {
                   const related = getFigureById(rel.figureId);
                   if (!related) return null;
@@ -150,7 +150,7 @@ export default function FigurePage() {
               <span style={{ fontSize: 15 }}>📌</span>
               <h3 style={{ fontSize: 12, fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "0.08em" }}>Quick Facts</h3>
             </div>
-            <div style={{ padding: "14px 16px", display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(180px, 1fr))", gap: 10 }}>
+            <div style={{ padding: "14px 16px", display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(140px, 100%), 1fr))", gap: 10 }}>
               {[
                 { label: "Era", value: figure.era },
                 { label: "Title", value: figure.title },
@@ -171,7 +171,7 @@ export default function FigurePage() {
               <span style={{ fontSize: 15 }}>👥</span>
               <h3 style={{ fontSize: 12, fontWeight: 700, color: "rgba(255,255,255,0.5)", textTransform: "uppercase", letterSpacing: "0.08em" }}>Other Figures</h3>
             </div>
-            <div style={{ padding: "10px 12px", display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(160px, 1fr))", gap: 4 }}>
+            <div style={{ padding: "10px 12px", display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(min(150px, 100%), 1fr))", gap: 6 }}>
               {figures.filter((f) => f.id !== figure.id).slice(0, 6).map((f) => (
                 <Link key={f.id} href={`/figure/${f.id}`} style={{ textDecoration: "none" }}>
                   <div style={{ display: "flex", alignItems: "center", gap: 10, padding: "8px 10px", borderRadius: 10, cursor: "pointer" }}>

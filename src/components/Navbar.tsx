@@ -41,7 +41,7 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Links */}
-          <div style={{ display: "flex", gap: 4, "@media(maxWidth:768px)": { display: "none" } as any }}>
+          <div className="desktop-links" style={{ display: "flex", gap: 4 }}>
             {links.map((link) => (
               <Link key={link.href} href={link.href} style={{
                 padding: "8px 16px", borderRadius: 10, fontSize: 14,
@@ -54,16 +54,17 @@ export default function Navbar() {
           </div>
 
           {/* Desktop CTA */}
-          <Link href="/story/ancient-greece-story" style={{
+          <Link href="/story/ancient-greece-story" className="desktop-cta" style={{
             padding: "9px 20px", borderRadius: 10,
             background: "#fbbf24", color: "#000",
             fontWeight: 700, fontSize: 14, textDecoration: "none",
-            display: typeof window !== "undefined" && window.innerWidth < 768 ? "none" : "block",
           }}>Start Learning →</Link>
 
           {/* Hamburger */}
           <button
+            className="mobile-menu-btn"
             onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle Navigation Menu"
             style={{
               background: "none", border: "1px solid rgba(255,255,255,0.1)",
               borderRadius: 8, padding: "8px 10px", cursor: "pointer",
@@ -82,9 +83,11 @@ export default function Navbar() {
         <div style={{
           position: "fixed", top: 64, left: 0, right: 0, zIndex: 99,
           background: "rgba(10,10,15,0.98)", backdropFilter: "blur(20px)",
+          WebkitBackdropFilter: "blur(20px)",
           borderBottom: "1px solid rgba(255,255,255,0.08)",
           padding: "16px 20px 24px",
           display: "flex", flexDirection: "column", gap: 4,
+          boxShadow: "0 20px 40px rgba(0,0,0,0.6)",
         }}>
           {links.map((link) => (
             <Link key={link.href} href={link.href}
@@ -111,10 +114,13 @@ export default function Navbar() {
       <style>{`
         @media (min-width: 769px) {
           .mobile-menu-btn { display: none !important; }
+          .desktop-links { display: flex !important; }
+          .desktop-cta { display: block !important; }
         }
         @media (max-width: 768px) {
           .desktop-links { display: none !important; }
           .desktop-cta { display: none !important; }
+          .mobile-menu-btn { display: flex !important; }
         }
       `}</style>
     </>

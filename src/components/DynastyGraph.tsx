@@ -76,47 +76,53 @@ export default function DynastyGraph() {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
       {/* Legend */}
-      <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-        {Object.entries(typeColors).map(([type, colors]) => (
-          <div
-            key={type}
-            style={{ display: "flex", alignItems: "center", gap: 6 }}
-          >
+      <div style={{ display: "flex", gap: 16, flexWrap: "wrap", alignItems: "center", justifyContent: "space-between" }}>
+        <div style={{ display: "flex", gap: 14, flexWrap: "wrap", alignItems: "center" }}>
+          {Object.entries(typeColors).map(([type, colors]) => (
             <div
-              style={{
-                width: 10,
-                height: 10,
-                borderRadius: 3,
-                background: colors.bg,
-                border: `1px solid ${colors.border}`,
-              }}
-            />
-            <span
-              style={{
-                fontSize: 12,
-                color: "rgba(255,255,255,0.4)",
-                textTransform: "capitalize",
-              }}
+              key={type}
+              style={{ display: "flex", alignItems: "center", gap: 6 }}
             >
-              {type}
-            </span>
-          </div>
-        ))}
-        <div style={{ marginLeft: "auto" }}>
-          <span style={{ fontSize: 12, color: "rgba(255,255,255,0.25)" }}>
-            Click a node to explore
+              <div
+                style={{
+                  width: 10,
+                  height: 10,
+                  borderRadius: 3,
+                  background: colors.bg,
+                  border: `1px solid ${colors.border}`,
+                }}
+              />
+              <span
+                style={{
+                  fontSize: 12,
+                  color: "rgba(255,255,255,0.4)",
+                  textTransform: "capitalize",
+                }}
+              >
+                {type}
+              </span>
+            </div>
+          ))}
+        </div>
+        <div>
+          <span style={{ fontSize: 12, color: "rgba(251,191,36,0.6)", fontWeight: 500 }}>
+            Click node to explore · Pan / scroll tree →
           </span>
         </div>
       </div>
 
       {/* Graph container */}
       <div
+        className="dynasty-graph-scroll"
         style={{
           background: "#0d0d14",
           border: "1px solid rgba(255,255,255,0.07)",
           borderRadius: 24,
-          overflow: "auto",
+          overflowX: "auto",
+          overflowY: "hidden",
+          WebkitOverflowScrolling: "touch",
           position: "relative",
+          width: "100%",
         }}
       >
         {/* Grid background */}

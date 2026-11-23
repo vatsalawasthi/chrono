@@ -76,14 +76,14 @@ export default function StoryCard({
         {/* Top: emoji + title */}
         <div
           style={{
-            padding: "32px",
+            padding: "clamp(20px, 5vw, 32px)",
             borderBottom: "1px solid rgba(255,255,255,0.06)",
           }}
         >
           <div style={{ fontSize: 48, marginBottom: 16 }}>{step.imageEmoji}</div>
           <h2
             style={{
-              fontSize: 28,
+              fontSize: "clamp(22px, 5vw, 28px)",
               fontWeight: 700,
               color: "#fff",
               marginBottom: 8,
@@ -100,16 +100,16 @@ export default function StoryCard({
         {/* Content */}
         <div
           style={{
-            padding: "32px",
+            padding: "clamp(20px, 5vw, 32px)",
             borderBottom: "1px solid rgba(255,255,255,0.06)",
           }}
         >
           {/* Toggle */}
-          <div style={{ display: "flex", gap: 8, marginBottom: 20 }}>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 20 }}>
             <button
               onClick={() => setSimplified(false)}
               style={{
-                padding: "6px 16px",
+                padding: "8px 16px",
                 borderRadius: 10,
                 fontSize: 12,
                 fontWeight: 500,
@@ -127,7 +127,7 @@ export default function StoryCard({
             <button
               onClick={() => setSimplified(true)}
               style={{
-                padding: "6px 16px",
+                padding: "8px 16px",
                 borderRadius: 10,
                 fontSize: 12,
                 fontWeight: 500,
@@ -165,21 +165,21 @@ export default function StoryCard({
         {/* Key fact */}
         <div
           style={{
-            padding: "24px 32px",
+            padding: "clamp(16px, 4vw, 24px) clamp(20px, 5vw, 32px)",
             borderBottom: "1px solid rgba(255,255,255,0.06)",
           }}
         >
           <div
             style={{
               display: "flex",
-              gap: 16,
-              padding: "18px 20px",
+              gap: 14,
+              padding: "16px 18px",
               borderRadius: 16,
               border: "1px solid rgba(251,191,36,0.18)",
               background: "rgba(251,191,36,0.06)",
             }}
           >
-            <span style={{ fontSize: 20, marginTop: 2 }}>💡</span>
+            <span style={{ fontSize: 20, marginTop: 2, flexShrink: 0 }}>💡</span>
             <div>
               <div
                 style={{
@@ -210,7 +210,7 @@ export default function StoryCard({
         {!isLast && (
           <div
             style={{
-              padding: "14px 32px",
+              padding: "14px clamp(20px, 5vw, 32px)",
               borderBottom: "1px solid rgba(255,255,255,0.06)",
               background: "rgba(255,255,255,0.015)",
             }}
@@ -227,17 +227,19 @@ export default function StoryCard({
         {/* Navigation */}
         <div
           style={{
-            padding: "20px 32px",
+            padding: "16px clamp(20px, 5vw, 32px)",
             display: "flex",
             alignItems: "center",
             justifyContent: "space-between",
+            flexWrap: "wrap",
+            gap: 12,
           }}
         >
           <button
             onClick={onPrev}
             disabled={isFirst}
             style={{
-              padding: "10px 20px",
+              padding: "12px 22px",
               borderRadius: 12,
               fontSize: 13,
               fontWeight: 500,
@@ -246,6 +248,7 @@ export default function StoryCard({
               background: "transparent",
               color: isFirst ? "rgba(255,255,255,0.15)" : "rgba(255,255,255,0.5)",
               transition: "all 0.2s",
+              minHeight: 44,
             }}
           >
             ← Previous
@@ -262,7 +265,7 @@ export default function StoryCard({
             <button
               onClick={onNext}
               style={{
-                padding: "10px 28px",
+                padding: "12px 26px",
                 borderRadius: 12,
                 fontSize: 13,
                 fontWeight: 700,
@@ -272,6 +275,7 @@ export default function StoryCard({
                 color: "#000",
                 boxShadow: "0 8px 24px rgba(251,191,36,0.3)",
                 transition: "all 0.2s",
+                minHeight: 44,
               }}
             >
               Next Episode →

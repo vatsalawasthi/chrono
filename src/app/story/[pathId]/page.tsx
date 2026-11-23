@@ -44,8 +44,8 @@ export default function StoryPathPage() {
       </div>
 
       {/* Mobile top bar */}
-      <div style={{
-        position: "sticky", top: 66, zIndex: 30,
+      <div className="mobile-top-bar" style={{
+        position: "sticky", top: 64, zIndex: 30,
         background: "rgba(10,10,15,0.95)", borderBottom: "1px solid rgba(255,255,255,0.06)",
         padding: "10px 16px", display: "flex", alignItems: "center", justifyContent: "space-between",
       }}>
@@ -66,7 +66,7 @@ export default function StoryPathPage() {
 
       {/* Mobile sidebar dropdown */}
       {sidebarOpen && (
-        <div style={{
+        <div className="mobile-sidebar-dropdown" style={{
           position: "sticky", top: 109, zIndex: 29,
           background: "#0d0d14", borderBottom: "1px solid rgba(255,255,255,0.06)",
           maxHeight: 280, overflowY: "auto", padding: "8px 12px",
@@ -99,12 +99,7 @@ export default function StoryPathPage() {
       )}
 
       <div style={{ maxWidth: 1200, margin: "0 auto", padding: "24px 16px 60px" }}>
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: 24,
-          alignItems: "start",
-        }}>
+        <div className="story-layout-grid">
           {/* Desktop Sidebar */}
           <div style={{ display: "none" }} className="desktop-sidebar">
             <div style={{ position: "sticky", top: 88 }}>
@@ -175,8 +170,24 @@ export default function StoryPathPage() {
       </div>
 
       <style>{`
-        @media (min-width: 900px) {
+        @media (min-width: 960px) {
+          .mobile-top-bar { display: none !important; }
           .desktop-sidebar { display: block !important; }
+          .story-layout-grid {
+            display: grid;
+            grid-template-columns: 240px minmax(0, 1fr) 260px;
+            gap: 24px;
+            align-items: start;
+          }
+        }
+        @media (max-width: 959px) {
+          .mobile-top-bar { display: flex !important; }
+          .desktop-sidebar { display: none !important; }
+          .story-layout-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+          }
         }
       `}</style>
     </div>

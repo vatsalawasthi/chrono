@@ -35,18 +35,19 @@ export default function HomePage() {
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
-        padding: "80px 24px",
+        padding: "100px 20px 60px",
         position: "relative",
+        overflow: "hidden",
       }}>
         <div style={{
           position: "absolute", top: "20%", left: "50%",
           transform: "translateX(-50%)",
-          width: 600, height: 600,
+          width: "min(600px, 90vw)", height: "min(600px, 90vw)",
           background: "radial-gradient(circle, rgba(251,191,36,0.07) 0%, transparent 65%)",
           pointerEvents: "none",
         }} />
 
-        <div style={{ position: "relative", zIndex: 1, maxWidth: 720 }}>
+        <div style={{ position: "relative", zIndex: 1, maxWidth: 720, width: "100%" }}>
           <div style={{
             display: "inline-flex", alignItems: "center", gap: 8,
             padding: "7px 18px", borderRadius: 999,
@@ -65,7 +66,7 @@ export default function HomePage() {
           </div>
 
           <h1 style={{
-            fontSize: "clamp(44px, 7vw, 76px)",
+            fontSize: "clamp(38px, 7vw, 76px)",
             fontWeight: 800, lineHeight: 1.05,
             color: "#fff", marginBottom: 24,
             letterSpacing: "-0.025em",
@@ -82,8 +83,9 @@ export default function HomePage() {
           </h1>
 
           <p style={{
-            fontSize: 18, color: "rgba(255,255,255,0.42)",
-            lineHeight: 1.8, maxWidth: 500, margin: "0 auto 44px",
+            fontSize: "clamp(15px, 2.5vw, 18px)", color: "rgba(255,255,255,0.42)",
+            lineHeight: 1.8, maxWidth: 500, margin: "0 auto 40px",
+            padding: "0 10px",
           }}>
             Guided story paths. Real historical figures. No prior knowledge needed.
             History finally makes sense — episode by episode.
@@ -91,31 +93,33 @@ export default function HomePage() {
 
           <div style={{
             display: "flex", gap: 12, justifyContent: "center",
-            flexWrap: "wrap", marginBottom: 64,
+            flexWrap: "wrap", marginBottom: 56,
           }}>
             <Link href="/story/ancient-greece-story" style={{
-              display: "inline-flex", alignItems: "center", gap: 8,
+              display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8,
               padding: "15px 30px", borderRadius: 14,
               background: "#fbbf24", color: "#000",
               fontWeight: 700, fontSize: 15, textDecoration: "none",
               boxShadow: "0 8px 32px rgba(251,191,36,0.3)",
+              minWidth: "min(240px, 100%)",
             }}>
               Start with Ancient Greece →
             </Link>
             <Link href="/dynasty" style={{
-              display: "inline-flex", alignItems: "center",
+              display: "inline-flex", alignItems: "center", justifyContent: "center",
               padding: "15px 30px", borderRadius: 14,
               border: "1px solid rgba(255,255,255,0.1)",
               color: "rgba(255,255,255,0.65)",
               fontWeight: 600, fontSize: 15, textDecoration: "none",
+              minWidth: "min(200px, 100%)",
             }}>
               Explore Dynasty Tree
             </Link>
           </div>
 
           <div style={{
-            display: "flex", justifyContent: "center",
-            gap: 10, flexWrap: "wrap",
+            display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))",
+            gap: 10, maxWidth: 640, margin: "0 auto",
           }}>
             {[
               { number: "15+", label: "Historical Figures" },
@@ -124,10 +128,10 @@ export default function HomePage() {
               { number: "1", label: "Empire" },
             ].map((stat) => (
               <div key={stat.label} style={{
-                padding: "16px 28px", borderRadius: 14,
+                padding: "16px 20px", borderRadius: 14,
                 border: "1px solid rgba(255,255,255,0.06)",
                 background: "rgba(255,255,255,0.025)",
-                textAlign: "center", minWidth: 110,
+                textAlign: "center",
               }}>
                 <div style={{
                   fontSize: 24, fontWeight: 800,
@@ -150,10 +154,10 @@ export default function HomePage() {
       {/* ── WHY CHRONO ── */}
       <div style={{
         borderTop: "1px solid rgba(255,255,255,0.05)",
-        padding: "100px 24px",
+        padding: "clamp(60px, 10vw, 100px) 20px",
       }}>
         <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 60 }}>
+          <div style={{ textAlign: "center", marginBottom: 50 }}>
             <div style={{
               fontSize: 11, fontWeight: 700, color: "#fbbf24",
               textTransform: "uppercase", letterSpacing: "0.15em",
@@ -162,7 +166,7 @@ export default function HomePage() {
               Why Chrono
             </div>
             <h2 style={{
-              fontSize: 38, fontWeight: 800, color: "#fff",
+              fontSize: "clamp(26px, 5vw, 38px)", fontWeight: 800, color: "#fff",
               letterSpacing: "-0.02em", marginBottom: 16,
             }}>
               History was never meant to be a textbook
@@ -178,7 +182,7 @@ export default function HomePage() {
 
           <div style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(260px, 100%), 1fr))",
             gap: 16,
           }}>
             {[
@@ -238,10 +242,10 @@ export default function HomePage() {
       {/* ── TIMELINE PREVIEW ── */}
       <div style={{
         borderTop: "1px solid rgba(255,255,255,0.05)",
-        padding: "100px 24px",
+        padding: "clamp(60px, 10vw, 100px) 16px",
       }}>
         <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", marginBottom: 56 }}>
+          <div style={{ textAlign: "center", marginBottom: 48 }}>
             <div style={{
               fontSize: 11, fontWeight: 700, color: "#fbbf24",
               textTransform: "uppercase", letterSpacing: "0.15em",
@@ -250,14 +254,14 @@ export default function HomePage() {
               The Story So Far
             </div>
             <h2 style={{
-              fontSize: 38, fontWeight: 800, color: "#fff",
+              fontSize: "clamp(26px, 5vw, 38px)", fontWeight: 800, color: "#fff",
               letterSpacing: "-0.02em",
             }}>
               800 years of history, 10 episodes
             </h2>
           </div>
 
-          <div style={{ position: "relative", paddingLeft: 32 }}>
+          <div style={{ position: "relative", paddingLeft: "clamp(20px, 4vw, 32px)" }}>
             <div style={{
               position: "absolute", left: 7, top: 0, bottom: 0, width: 1,
               background: "linear-gradient(to bottom, transparent, rgba(251,191,36,0.3) 20%, rgba(251,191,36,0.3) 80%, transparent)",
@@ -275,7 +279,7 @@ export default function HomePage() {
               <div key={i} style={{
                 position: "relative",
                 marginBottom: 16,
-                paddingLeft: 24,
+                paddingLeft: "clamp(12px, 3vw, 24px)",
               }}>
                 <div style={{
                   position: "absolute", left: -25, top: 18,
@@ -285,31 +289,31 @@ export default function HomePage() {
                   border: "2px solid #0a0a0f",
                 }} />
                 <div style={{
-                  padding: "16px 20px", borderRadius: 14,
+                  padding: "16px 18px", borderRadius: 14,
                   border: "1px solid rgba(255,255,255,0.06)",
                   background: "#111118",
-                  display: "flex", alignItems: "center", gap: 20,
+                  display: "flex", alignItems: "flex-start", flexWrap: "wrap", gap: 12,
                 }}>
                   <div style={{
                     fontSize: 13, fontWeight: 700,
-                    color: item.color, minWidth: 60, whiteSpace: "nowrap",
+                    color: item.color, minWidth: 65,
                   }}>
                     {item.year}
                   </div>
-                  <div style={{ flex: 1 }}>
+                  <div style={{ flex: 1, minWidth: 160 }}>
                     <div style={{
                       fontSize: 14, fontWeight: 700,
                       color: "#fff", marginBottom: 3,
                     }}>
                       {item.title}
                     </div>
-                    <div style={{ fontSize: 13, color: "rgba(255,255,255,0.38)" }}>
+                    <div style={{ fontSize: 13, color: "rgba(255,255,255,0.38)", lineHeight: 1.5 }}>
                       {item.desc}
                     </div>
                   </div>
                   <Link href="/story/ancient-greece-story" style={{
-                    fontSize: 12, color: "rgba(255,255,255,0.2)",
-                    textDecoration: "none", whiteSpace: "nowrap",
+                    fontSize: 12, color: "rgba(255,255,255,0.35)",
+                    textDecoration: "none", whiteSpace: "nowrap", alignSelf: "center",
                   }}>
                     Read →
                   </Link>
@@ -323,10 +327,10 @@ export default function HomePage() {
       {/* ── KEY FIGURES ── */}
       <div style={{
         borderTop: "1px solid rgba(255,255,255,0.05)",
-        padding: "100px 24px",
+        padding: "clamp(60px, 10vw, 100px) 20px",
       }}>
         <div style={{ maxWidth: 900, margin: "0 auto" }}>
-          <div style={{ marginBottom: 40 }}>
+          <div style={{ marginBottom: 36 }}>
             <div style={{
               fontSize: 11, fontWeight: 700, color: "#fbbf24",
               textTransform: "uppercase", letterSpacing: "0.15em",
@@ -336,10 +340,10 @@ export default function HomePage() {
             </div>
             <div style={{
               display: "flex", alignItems: "flex-end",
-              justifyContent: "space-between", flexWrap: "wrap", gap: 20,
+              justifyContent: "space-between", flexWrap: "wrap", gap: 16,
             }}>
               <h2 style={{
-                fontSize: 38, fontWeight: 800, color: "#fff",
+                fontSize: "clamp(26px, 5vw, 38px)", fontWeight: 800, color: "#fff",
                 letterSpacing: "-0.02em",
               }}>
                 Meet the people
@@ -350,7 +354,7 @@ export default function HomePage() {
                     key={interest.id}
                     onClick={() => setActiveInterest(interest.id)}
                     style={{
-                      padding: "8px 16px", borderRadius: 10,
+                      padding: "8px 14px", borderRadius: 10,
                       fontSize: 13, fontWeight: 500, cursor: "pointer",
                       display: "flex", alignItems: "center", gap: 6,
                       border: activeInterest === interest.id
@@ -373,7 +377,7 @@ export default function HomePage() {
 
           <div style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(195px, 1fr))",
+            gridTemplateColumns: "repeat(auto-fill, minmax(min(180px, 100%), 1fr))",
             gap: 14,
           }}>
             {filteredFigures.map((figure) => (
@@ -432,34 +436,35 @@ export default function HomePage() {
       {/* ── CTA ── */}
       <div style={{
         borderTop: "1px solid rgba(255,255,255,0.05)",
-        padding: "100px 24px",
+        padding: "clamp(60px, 10vw, 100px) 20px",
       }}>
         <div style={{ maxWidth: 580, margin: "0 auto", textAlign: "center" }}>
           <div style={{
-            padding: "60px 40px", borderRadius: 28,
+            padding: "clamp(36px, 8vw, 60px) clamp(20px, 6vw, 40px)", borderRadius: 28,
             border: "1px solid rgba(251,191,36,0.12)",
             background: "linear-gradient(180deg, rgba(251,191,36,0.06) 0%, rgba(10,10,15,0) 100%)",
           }}>
             <div style={{ fontSize: 52, marginBottom: 22 }}>🏛️</div>
             <h2 style={{
-              fontSize: 34, fontWeight: 800, color: "#fff",
+              fontSize: "clamp(26px, 5vw, 34px)", fontWeight: 800, color: "#fff",
               marginBottom: 14, letterSpacing: "-0.02em",
             }}>
               Ready to start?
             </h2>
             <p style={{
-              fontSize: 16, color: "rgba(255,255,255,0.38)",
+              fontSize: "clamp(14px, 2.5vw, 16px)", color: "rgba(255,255,255,0.38)",
               lineHeight: 1.75, marginBottom: 36,
             }}>
               10 episodes. 15 figures. One complete story of Ancient Greece —
               from city-states to the death of Cleopatra.
             </p>
             <Link href="/story/ancient-greece-story" style={{
-              display: "inline-flex", alignItems: "center", gap: 8,
+              display: "inline-flex", alignItems: "center", justifyContent: "center", gap: 8,
               padding: "15px 36px", borderRadius: 14,
               background: "#fbbf24", color: "#000",
               fontWeight: 700, fontSize: 16, textDecoration: "none",
               boxShadow: "0 8px 32px rgba(251,191,36,0.3)",
+              maxWidth: "100%",
             }}>
               Begin Episode 1 →
             </Link>
@@ -470,12 +475,12 @@ export default function HomePage() {
       {/* ── FOOTER ── */}
       <div style={{
         borderTop: "1px solid rgba(255,255,255,0.05)",
-        padding: "40px 24px",
+        padding: "40px 20px",
       }}>
         <div style={{
           maxWidth: 900, margin: "0 auto",
           display: "flex", alignItems: "center",
-          justifyContent: "space-between", flexWrap: "wrap", gap: 16,
+          justifyContent: "space-between", flexWrap: "wrap", gap: 20,
         }}>
           <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
             <div style={{
